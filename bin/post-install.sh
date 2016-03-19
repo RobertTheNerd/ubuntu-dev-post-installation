@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # NOPASSWD in sudoer for current user
-echo "$USER\tALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a sudoers > /dev/null
+echo "$USER  ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers > /dev/null
 
 # update & upgrade
 sudo apt-get update; sudo apt-get upgrade -y
