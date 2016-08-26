@@ -1,12 +1,14 @@
 # Ubuntu initialization script
-This is the script to install & config a Ubuntu working machine. #DRY.
-*Note* 
-This only works on a freshly installed system. 
+This is the script to install & config a Ubuntu dev machine. Tested for Ubuntu 16.04. #DRY.
+
 
 ## How to use
 ```
-cd ~
-git clone https://RobertTheNerd@bitbucket.org/RobertTheNerd/ubuntu-dev-post-install.git 
-sh ubuntu-dev-post-install/bin/post-install.sh
-rm -rf ubuntu-dev-post-install
+# Make sure to use bash instead of sh here as pushd is not available in sh.
+curl -L "https://goo.gl/HhvNlV" | bash
+```
+## Post scripts (somehow embarassing)
+* oh-my-zsh script will not be able to succeed the last step due to PAM authentication error. Thus run the following script manually:
+```
+chsh -s /usr/bin/zsh
 ```
