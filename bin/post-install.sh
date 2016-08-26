@@ -6,6 +6,9 @@ echo "$USER  ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers > /dev/null
 # update & upgrade
 sudo apt-get update; sudo apt-get upgrade -y
 
+# install git
+sudo apt-get install git;
+
 # install zsh & oh-my-zsh
 sudo apt-get install zsh -y
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
