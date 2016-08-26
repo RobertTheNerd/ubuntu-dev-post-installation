@@ -30,6 +30,14 @@ sh ~/.vim_runtime/install_awesome_vimrc.sh
 sudo apt-get install openssh-server -y
 sudo ufw allow 22
 
+# install jdk
+source $SCRIPTPATH/install-jdk.sh
+
+# isntall google-chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
+
 # install sublime text, https://gist.github.com/simonewebdesign/8507139
 curl -L git.io/sublimetext | sh
 
@@ -37,9 +45,6 @@ curl -L git.io/sublimetext | sh
 wget "http://ppa.launchpad.net/nilarimogard/webupd8/ubuntu/pool/main/i/indicator-netspeed/indicator-netspeed_0+git20140722-0~webupd8~xenial_amd64.deb" -O indicator.deb
 sudo dpkg -i indicator.deb
 rm indicator.deb
-
-# install jdk
-source $SCRIPTPATH/install-jdk.sh
 
 # install app-grid
 sudo add-apt-repository ppa:appgrid/stable -y
