@@ -87,6 +87,7 @@ popd
 # isntall google-chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt-get install -f
 rm google-chrome-stable_current_amd64.deb
 
 # install sublime text, https://gist.github.com/simonewebdesign/8507139
@@ -101,5 +102,3 @@ rm indicator.deb
 sudo add-apt-repository ppa:appgrid/stable -y
 sudo apt-get update
 sudo apt-get install appgrid -y
-
-
