@@ -39,9 +39,7 @@ sudo dpkg -i indicator.deb
 rm indicator.deb
 
 # install jdk
-source $SCRIPTPATH/install_jdk.sh
-
-
+source $SCRIPTPATH/install-jdk.sh
 
 # install app-grid
 sudo add-apt-repository ppa:appgrid/stable -y
