@@ -6,11 +6,11 @@ SCRIPTPATH=`dirname $SCRIPT`
 
 # install jdk
 install_jdk() {
+    CURRENT_FOLDER=$(readlink -f .)
+
     # get jdk tar file. https://gist.github.com/RobertTheNerd/aa96c79ffcf4d417f193ffb406555667
     EXT="tar.gz"
     JDK_VERSION="8"
-
-    pushd /tmp
 
     URL="http://www.oracle.com"
     JDK_DOWNLOAD_URL1="${URL}/technetwork/java/javase/downloads/index.html"
@@ -23,12 +23,6 @@ install_jdk() {
     JDK_DOWNLOAD_URL3="${URL}${JDK_DOWNLOAD_URL2}"
     JDK_DOWNLOAD_URL4=`curl -s $JDK_DOWNLOAD_URL3 | egrep -o "http\:\/\/download.oracle\.com\/otn-pub\/java\/jdk\/[7-8]u[0-9]+\-(.*)+\/jdk-[7-8]u[0-9]+(.*)linux-x64.${EXT}" | tail -1`
 
-    wget --no-cookies \
-      --no-check-certificate \
-      --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-      -O jdk.tar.gz \
-      $JDK_DOWNLOAD_URL4
-
     # create folder
     JDK_FOLDER=/opt/java/versions
     if [ ! -d ${JDK_FOLDER} ]; then
@@ -40,7 +34,12 @@ install_jdk() {
     echo $RELEASE_FOLDER
 
     cd $JDK_FOLDER
-    sudo tar xvfz /tmp/jdk.tar.gz 
+    wget --no-cookies \
+     --no-check-certificate \
+     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+     -q -O - \
+     $JDK_DOWNLOAD_URL4 | sudo tar xz
+
     sudo ln -fs ${JDK_FOLDER}/$RELEASE_FOLDER current
 
     # add environment variable
@@ -53,10 +52,7 @@ export PATH=\$PATH:\$JAVA_HOME/bin
 
     fi
 
-    # clean up 
-    rm /tmp/jdk.tar.gz
-
-    popd
+    cd $CURRENT_FOLDER
 }
 
 post_install() {
