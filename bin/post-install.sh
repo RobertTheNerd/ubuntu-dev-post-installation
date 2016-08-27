@@ -87,7 +87,7 @@ post_install() {
     sudo ufw allow 22
 
     # LAMP
-    sudo apt-get install apache2 mysql php -y
+    sudo apt-get install apache2 mysql-server php -y
 
     # jdk
     install_jdk
