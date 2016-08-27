@@ -30,6 +30,9 @@ sh ~/.vim_runtime/install_awesome_vimrc.sh
 sudo apt-get install openssh-server -y
 sudo ufw allow 22
 
+# install LAMP
+sudo apt-get install apache2 mysql php -y
+
 # install jdk -- begin --
 # get jdk tar file. https://gist.github.com/RobertTheNerd/aa96c79ffcf4d417f193ffb406555667
 EXT="tar.gz"
