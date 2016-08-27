@@ -7,13 +7,14 @@ Features/software:
 * zsh, oh-my-zsh
 * tmux (configured with zsh)
 * vim, awesome_vimrc
-* openssh-server
+* OpenSSH-Server
 * LAMP
 * Oracle JDK 8 
+* Docker
 * Google Chrome
-* sublime text 
+* Sublime Text 
 * Indicator Netspeed 
-* appgrid
+* AppGrid
 
 
 ## How to use
