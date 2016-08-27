@@ -8,7 +8,7 @@ This is the script to install & config a Ubuntu dev machine. Tested for Ubuntu 1
 curl -L "https://goo.gl/HhvNlV" | bash
 ```
 ## Post scripts (somehow embarassing)
-* oh-my-zsh script will not be able to succeed the last step due to PAM authentication error. Thus run the following script manually:
+* oh-my-zsh script will not be able to succeed the last step due to PAM authentication error. Run the following script manually:
 ```
 chsh -s /usr/bin/zsh
 ```
