@@ -19,7 +19,7 @@ Features/software:
 ## How to use
 ```
 # Make sure to use bash instead of sh here as pushd is not available in sh.
-curl -L "https://goo.gl/HhvNlV" | bash
+curl -sSL "https://goo.gl/HhvNlV" | bash
 ```
 ## Post scripts (somehow embarassing)
 * oh-my-zsh script will not be able to succeed the last step due to PAM authentication error. Run the following script manually:
