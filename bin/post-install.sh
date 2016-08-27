@@ -24,29 +24,32 @@ install_jdk() {
     JDK_DOWNLOAD_URL4=`curl -s $JDK_DOWNLOAD_URL3 | egrep -o "http\:\/\/download.oracle\.com\/otn-pub\/java\/jdk\/[7-8]u[0-9]+\-(.*)+\/jdk-[7-8]u[0-9]+(.*)linux-x64.${EXT}" | tail -1`
 
     # create folder
-    JDK_FOLDER=/opt/java/versions
+    JAVA_FOLDER=/opt/java
+    JDK_FOLDER=$JAVA_FOLDER/versions
     if [ ! -d ${JDK_FOLDER} ]; then
         sudo mkdir -p ${JDK_FOLDER}
     fi
+
+    cd $JDK_FOLDER
+    sudo wget --no-cookies \
+     --no-check-certificate \
+     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+     -q -O jdk.tar.gz \
+     $JDK_DOWNLOAD_URL4 
 
     # get current folder for jdk
     RELEASE_FOLDER=`tar tzf jdk.tar.gz | head -1 | cut -f1 -d"/"`
     echo $RELEASE_FOLDER
 
-    cd $JDK_FOLDER
-    wget --no-cookies \
-     --no-check-certificate \
-     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-     -q -O - \
-     $JDK_DOWNLOAD_URL4 | sudo tar xz
+    sudo tar xfz jdk.tar.gz; sudo rm jdk.tar.gz
 
-    sudo ln -fs ${JDK_FOLDER}/$RELEASE_FOLDER current
+    sudo ln -fs ${JDK_FOLDER}/$RELEASE_FOLDER $JAVA_FOLDER/current
 
-    # add environment variable
+# add environment variable
     if ! grep -q JAVA_HOME /etc/profile; then
         echo "
 # Java settings
-export JAVA_HOME=$JDK_FOLDER/current
+export JAVA_HOME=$JAVA_FOLDER/current
 export PATH=\$PATH:\$JAVA_HOME/bin
 " | sudo tee -a /etc/profile > /dev/null
 
