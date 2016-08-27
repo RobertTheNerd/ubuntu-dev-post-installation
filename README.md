@@ -10,6 +10,7 @@ Features/software:
 * openssh-server
 * LAMP
 * Oracle JDK 8 
+* docker
 * Google Chrome
 * sublime text 
 * Indicator Netspeed 
