@@ -1,5 +1,19 @@
-# Ubuntu initialization script
+# Ubuntu post installation script
 This is the script to install & config a Ubuntu dev machine. Tested for Ubuntu 16.04. #DRY.
+Features/software:
+* No password for sudo
+* git
+* tree
+* zsh, oh-my-zsh
+* tmux (configured with zsh)
+* vim, awesome_vimrc
+* openssh-server
+* LAMP
+* Oracle JDK 8 
+* Google Chrome
+* sublime text 
+* Indicator Netspeed 
+* appgrid
 
 
 ## How to use
