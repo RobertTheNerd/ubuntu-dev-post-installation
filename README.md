@@ -1,4 +1,4 @@
-# Ubuntu post installation script
+# Ubuntu post-installation script
 This is the script to install & config a Ubuntu dev machine. Tested with Ubuntu 16.04. #DRY.
 Features/software:
 * No password for sudo
@@ -21,7 +21,7 @@ Features/software:
 ```
 curl -sSL "https://goo.gl/HhvNlV" | sh
 ```
-## Post scripts (somehow embarassing)
+## Post-post scripts (somehow embarassing)
 * oh-my-zsh script will not be able to succeed the last step due to PAM authentication error. Run the following script manually:
 ```
 chsh -s /usr/bin/zsh
