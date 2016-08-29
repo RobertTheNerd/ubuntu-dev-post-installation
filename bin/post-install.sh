@@ -58,26 +58,6 @@ export PATH=\$PATH:\$JAVA_HOME/bin
     cd $CURRENT_FOLDER
 }
 
-install_mysql() {
-    local password1
-    local password2
-
-    # get the password
-    while true
-    do
-        read -s -p "Please input root password for Mysql server:" password1;echo
-        read -s -p "Confirm your password:" password2;echo
-        if [ "$password1" = "$password2" ]; then
-            break
-        fi
-        echo Passwords are not the same!
-    done
-
-    # http://stackoverflow.com/questions/7739645/install-mysql-on-ubuntu-without-password-prompt
-    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $password1"
-    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $password1"
-    sudo apt-get -y install mysql-server
-}
 
 post_install() {
     # NOPASSWD in sudoer for current user
@@ -108,6 +88,8 @@ post_install() {
 
     # LAMP
     sudo apt-get install apache2 php -y
+    export DEBIAN_FRONTEND=noninteractive
+    sudo -E apt-get install mysql-server -y
 
     # jdk
     install_jdk
