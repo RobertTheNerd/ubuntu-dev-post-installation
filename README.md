@@ -1,5 +1,6 @@
 # Ubuntu post-installation script
 This is the script to install & config a Ubuntu dev machine. Tested with Ubuntu 16.04. #DRY.
+
 Features/software:
 * No password for sudo
 * git
