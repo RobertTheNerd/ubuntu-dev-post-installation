@@ -70,7 +70,7 @@ post_install() {
 
     # zsh & oh-my-zsh
     sudo apt-get install zsh -y
-    sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+    sh -c "$(wget https://raw.githubusercontent.com/RobertTheNerd/oh-my-zsh/master/tools/install.sh -O -)"
 
     # install & config tmux
     sudo apt-get install tmux -y
