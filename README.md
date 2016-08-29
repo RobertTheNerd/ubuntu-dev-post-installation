@@ -18,6 +18,7 @@ Features/software:
 
 
 ## How to use
+After system installation, run the command below under your non-root account:
 ```
 curl -sSL "https://goo.gl/HhvNlV" | sh
 ```
