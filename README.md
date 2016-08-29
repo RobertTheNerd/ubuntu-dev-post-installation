@@ -22,8 +22,3 @@ After system installation, run the command below under your non-root account:
 ```
 curl -sSL "https://goo.gl/HhvNlV" | sh
 ```
-## Post-post scripts (somehow embarassing)
-* oh-my-zsh script will not be able to succeed the last step due to PAM authentication error. Run the following script manually:
-```
-chsh -s /usr/bin/zsh
-```
