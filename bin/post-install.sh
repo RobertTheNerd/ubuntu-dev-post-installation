@@ -93,6 +93,7 @@ post_install() {
 
     # docker
     curl -sSL https://get.docker.com/ | sh
+    sudo usermod -aG docker $USER
 
     # google-chrome
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
