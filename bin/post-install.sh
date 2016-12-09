@@ -61,7 +61,7 @@ export PATH=\$PATH:\$JAVA_HOME/bin
 
 post_install() {
     # NOPASSWD in sudoer for current user
-    sudo sh -c "sed -i \"/$USER/d\" /etc/sudoers; echo \"$USER  ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers"
+    sudo sh -c "sed -i \"/$USER/d\" /etc/sudoers; echo \"$USER  ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers.d/$USER"
 
     # update & upgrade
     sudo apt-get update; sudo apt-get upgrade -y
