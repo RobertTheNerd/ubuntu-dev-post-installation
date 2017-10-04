@@ -92,7 +92,7 @@ post_install() {
     sudo -E apt-get install mysql-server -y
 
     # jdk
-    install_jdk
+    # install_jdk
 
     # docker
     curl -sSL https://get.docker.com/ | sh
