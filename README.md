@@ -9,8 +9,9 @@ Features/software:
 * tmux (configured with zsh)
 * vim, awesome_vimrc
 * OpenSSH-Server
-* LAMP
-* Oracle JDK 8 
+* -LAMP-, Apache & PHP
+* .Net Core
+* -Oracle JDK 8- 
 * Docker
 * Google Chrome
 * Sublime Text 
