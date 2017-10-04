@@ -123,5 +123,4 @@ post_install() {
     sudo apt-get install appgrid -y
 }
 
-post_instal://www.microsoft.com/net/core#linuxubuntu
-
+post_install
