@@ -4,61 +4,6 @@
 SCRIPT=$(readlink -f $0)
 SCRIPTPATH=`dirname $SCRIPT`
 
-# install jdk
-install_jdk() {
-    CURRENT_FOLDER=$(readlink -f .)
-
-    # get jdk tar file. https://gist.github.com/RobertTheNerd/aa96c79ffcf4d417f193ffb406555667
-    EXT="tar.gz"
-    JDK_VERSION="8"
-
-    URL="http://www.oracle.com"
-    JDK_DOWNLOAD_URL1="${URL}/technetwork/java/javase/downloads/index.html"
-    JDK_DOWNLOAD_URL2=`curl -s $JDK_DOWNLOAD_URL1 | egrep -o "\/technetwork\/java/\javase\/downloads\/jdk${JDK_VERSION}-downloads-.+?\.html" | head -1`
-    if [ -z "$JDK_DOWNLOAD_URL2" ]; then
-      echo "Could not get jdk download url - $JDK_DOWNLOAD_URL1"
-      exit 1
-    fi
-
-    JDK_DOWNLOAD_URL3="${URL}${JDK_DOWNLOAD_URL2}"
-    JDK_DOWNLOAD_URL4=`curl -s $JDK_DOWNLOAD_URL3 | egrep -o "http\:\/\/download.oracle\.com\/otn-pub\/java\/jdk\/[7-8]u[0-9]+\-(.*)+\/jdk-[7-8]u[0-9]+(.*)linux-x64.${EXT}" | tail -1`
-
-    # create folder
-    JAVA_FOLDER=/opt/java
-    JDK_FOLDER=$JAVA_FOLDER/versions
-    if [ ! -d ${JDK_FOLDER} ]; then
-        sudo mkdir -p ${JDK_FOLDER}
-    fi
-
-    cd $JDK_FOLDER
-    sudo wget --no-cookies \
-     --no-check-certificate \
-     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-     -q -O jdk.tar.gz \
-     $JDK_DOWNLOAD_URL4 
-
-    # get current folder for jdk
-    RELEASE_FOLDER=`tar tzf jdk.tar.gz | head -1 | cut -f1 -d"/"`
-    echo $RELEASE_FOLDER
-
-    sudo tar xfz jdk.tar.gz; sudo rm jdk.tar.gz
-
-    sudo ln -fs ${JDK_FOLDER}/$RELEASE_FOLDER $JAVA_FOLDER/current
-
-# add environment variable
-    if ! grep -q JAVA_HOME /etc/profile; then
-        echo "
-# Java settings
-export JAVA_HOME=$JAVA_FOLDER/current
-export PATH=\$PATH:\$JAVA_HOME/bin
-" | sudo tee -a /etc/profile > /dev/null
-
-    fi
-
-    cd $CURRENT_FOLDER
-}
-
-
 post_install() {
     # NOPASSWD in sudoer for current user
     sudo sh -c "sed -i \"/$USER/d\" /etc/sudoers; echo \"$USER  ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers.d/$USER"
@@ -99,6 +44,10 @@ post_install() {
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
     sudo apt-get update
     sudo apt-get install dotnet-sdk-2.0.0
+    
+    # Node.js
+    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    sudo apt-get install -y nodejs
 
     # google-chrome
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
