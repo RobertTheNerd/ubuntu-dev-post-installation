@@ -86,17 +86,18 @@ post_install() {
     sudo apt-get install openssh-server -y
     sudo ufw allow 22
 
-    # LAMP
+    # PHP & Apache. Use docker for mysql
     sudo apt-get install apache2 php -y
-    export DEBIAN_FRONTEND=noninteractive
-    sudo -E apt-get install mysql-server -y
-
-    # jdk
-    # install_jdk
 
     # docker
     curl -sSL https://get.docker.com/ | sh
     sudo usermod -aG docker $USER
+
+    # dotnet core, https://www.microsoft.com/net/core#linuxubuntu
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+    sudo apt-get updatesudo apt-get install dotnet-sdk-2.0.0
 
     # google-chrome
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -105,7 +106,11 @@ post_install() {
     rm google-chrome-stable_current_amd64.deb
 
     # sublime text, https://gist.github.com/simonewebdesign/8507139
-    curl -L git.io/sublimetext | sh
+    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+    sudo apt-get install apt-transport-https
+    echo "deb https://download.sublimetext.com/ apt/dev/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+    sudo apt-get update
+    sudo apt-get install sublime-text
 
     # Indicator Netspeed 
     wget "http://ppa.launchpad.net/nilarimogard/webupd8/ubuntu/pool/main/i/indicator-netspeed/indicator-netspeed_0+git20140722-0~webupd8~xenial_amd64.deb" -O indicator.deb
@@ -118,5 +123,5 @@ post_install() {
     sudo apt-get install appgrid -y
 }
 
-post_install
+post_instal://www.microsoft.com/net/core#linuxubuntu
 
