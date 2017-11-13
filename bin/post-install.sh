@@ -17,6 +17,10 @@ post_install() {
     # zsh & oh-my-zsh
     sudo apt-get install zsh -y
     sh -c "$(wget https://raw.githubusercontent.com/RobertTheNerd/oh-my-zsh/master/tools/install.sh -O -)"
+    
+    # vmware mount
+    mkdir ~/Shared
+    echo '[ "$(ls -A ~/Shared)"  ] || vmhgfs-fuse -o uid=1000 -o gid=1000 .host:/ ~/Shared' >> ~/.zshrc
 
     # install & config tmux
     sudo apt-get install tmux -y
