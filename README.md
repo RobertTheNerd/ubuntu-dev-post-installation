@@ -22,5 +22,9 @@ Features/software:
 ## How to use
 After system installation, run the command below under your non-root account:
 ```
+wget -q -O- --header="Cache-Control: no-cache" "https://goo.gl/HhvNlV"  | sh
+```
+or 
+```
 curl -sSL "https://goo.gl/HhvNlV" -H 'Cache-Control: no-cache' | sh
 ```
