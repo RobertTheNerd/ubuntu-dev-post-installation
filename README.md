@@ -3,20 +3,21 @@ This is the script to install & config a Ubuntu dev machine. Tested with Ubuntu 
 
 Features/software:
 * No password for sudo
+* curl
 * git
 * tree
 * zsh, oh-my-zsh
 * tmux (configured with zsh)
-* vim, awesome_vimrc
+* ~~vim, awesome_vimrc~~
 * OpenSSH-Server
 * ~~LAMP~~, Apache & PHP
-* .Net Core
+* ~~.Net Core~~
 * ~~Oracle JDK 8~~
 * Docker
-* Google Chrome
-* Sublime Text 
-* Indicator Netspeed 
-* AppGrid
+* ~~Google Chrome~~
+* ~~Sublime Text~~ 
+* ~~Indicator Netspeed ~~
+* ~~AppGrid~~
 
 
 ## How to use
