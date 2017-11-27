@@ -42,8 +42,17 @@ post_install() {
     # sudo apt-get install apache2 php -y
 
     # docker
-    curl -sSL https://get.docker.com/ | sh
-    sudo usermod -aG docker $USER
+    sudo apt-get install --no-install-recommends \
+        apt-transport-https \
+        curl \
+        software-properties-common
+    curl -fsSL 'https://sks-keyservers.net/pks/lookup?op=get&search=0xee6d536cf7dc86e2d7d56f59a178ac6c6238f52e' | sudo apt-key add -
+    sudo add-apt-repository \
+        "deb https://packages.docker.com/1.12/apt/repo/ \
+        ubuntu-$(lsb_release -cs) \
+        main"
+    sudo apt-get update
+    sudo apt-get -y install docker-engine
 
     # dotnet core, https://www.microsoft.com/net/core#linuxubuntu
     # curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
