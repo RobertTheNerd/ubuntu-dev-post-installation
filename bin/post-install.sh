@@ -11,6 +11,9 @@ post_install() {
     # update & upgrade
     sudo apt-get update; sudo apt-get upgrade -y
 
+    # install curl
+    sudo apt install curl -y
+
     # git
     sudo apt-get install git tree -y;
 
