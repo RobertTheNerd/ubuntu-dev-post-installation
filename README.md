@@ -13,6 +13,7 @@ Features/software:
 * ~~LAMP~~, Apache & PHP
 * ~~.Net Core~~
 * ~~Oracle JDK 8~~
+* Node.js
 * Docker
 * ~~Google Chrome~~
 * ~~Sublime Text~~ 
