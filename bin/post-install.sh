@@ -27,54 +27,54 @@ post_install() {
     echo "set-option -g default-shell /bin/zsh" >> ~/.tmux.conf
 
     # vim and Ultimate vimrc
-    sudo apt-get install vim -y
-    git clone https://github.com/RobertTheNerd/vimrc.git ~/.vim_runtime
-    sh ~/.vim_runtime/install_awesome_vimrc.sh
+    # sudo apt-get install vim -y
+    # git clone https://github.com/RobertTheNerd/vimrc.git ~/.vim_runtime
+    # sh ~/.vim_runtime/install_awesome_vimrc.sh
 
     # ssh-server
     sudo apt-get install openssh-server -y
     sudo ufw allow 22
 
     # PHP & Apache. Use docker for mysql
-    sudo apt-get install apache2 php -y
+    # sudo apt-get install apache2 php -y
 
     # docker
     curl -sSL https://get.docker.com/ | sh
     sudo usermod -aG docker $USER
 
     # dotnet core, https://www.microsoft.com/net/core#linuxubuntu
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
-    sudo apt-get update
-    sudo apt-get install -y dotnet-sdk-2.0.0
+    # curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    # sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    # sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+    # sudo apt-get update
+    # sudo apt-get install -y dotnet-sdk-2.0.0
     
     # Node.js
     curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
     sudo apt-get install -y nodejs
 
     # google-chrome
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    sudo dpkg -i google-chrome-stable_current_amd64.deb
-    sudo apt-get install -fy
-    rm google-chrome-stable_current_amd64.deb
+    # wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    # sudo dpkg -i google-chrome-stable_current_amd64.deb
+    # sudo apt-get install -fy
+    # rm google-chrome-stable_current_amd64.deb
 
     # sublime text, https://gist.github.com/simonewebdesign/8507139
-    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-    sudo apt-get install apt-transport-https
-    echo "deb https://download.sublimetext.com/ apt/dev/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-    sudo apt-get update
-    sudo apt-get install sublime-text
+    # wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+    # sudo apt-get install apt-transport-https
+    # echo "deb https://download.sublimetext.com/ apt/dev/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+    # sudo apt-get update
+    # sudo apt-get install sublime-text
 
     # Indicator Netspeed 
-    wget "http://ppa.launchpad.net/nilarimogard/webupd8/ubuntu/pool/main/i/indicator-netspeed/indicator-netspeed_0+git20140722-0~webupd8~xenial_amd64.deb" -O indicator.deb
-    sudo dpkg -i indicator.deb
-    rm indicator.deb
+    # wget "http://ppa.launchpad.net/nilarimogard/webupd8/ubuntu/pool/main/i/indicator-netspeed/indicator-netspeed_0+git20140722-0~webupd8~xenial_amd64.deb" -O indicator.deb
+    # sudo dpkg -i indicator.deb
+    # rm indicator.deb
 
     # app-grid
-    sudo add-apt-repository ppa:appgrid/stable -y
-    sudo apt-get update
-    sudo apt-get install appgrid -y
+    # sudo add-apt-repository ppa:appgrid/stable -y
+    # sudo apt-get update
+    # sudo apt-get install appgrid -y
 }
 
 post_install
