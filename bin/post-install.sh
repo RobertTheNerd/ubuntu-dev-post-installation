@@ -53,6 +53,7 @@ post_install() {
         main"
     sudo apt-get update
     sudo apt-get -y install docker-engine
+    sudo usermod -a -G docker $USER
 
     # dotnet core, https://www.microsoft.com/net/core#linuxubuntu
     # curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
