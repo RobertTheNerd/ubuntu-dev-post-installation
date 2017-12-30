@@ -6,7 +6,7 @@ SCRIPTPATH=`dirname $SCRIPT`
 
 post_install() {
     # NOPASSWD in sudoer for current user
-    sudo sh -c "sed -i \"/$USER/d\" /etc/sudoers; echo \"$USER  ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers.d/$USER"
+    # sudo sh -c "sed -i \"/$USER/d\" /etc/sudoers; echo \"$USER  ALL=(ALL:ALL) NOPASSWD: ALL\" >> /etc/sudoers.d/$USER"
 
     # update & upgrade
     sudo apt-get update; sudo apt-get upgrade -y
@@ -36,18 +36,18 @@ post_install() {
     sudo ufw allow 22
 
     # PHP & Apache. Use docker for mysql
-    sudo apt-get install apache2 php -y
+    # sudo apt-get install apache2 php -y
 
     # docker
     curl -sSL https://get.docker.com/ | sh
     sudo usermod -aG docker $USER
 
     # dotnet core, https://www.microsoft.com/net/core#linuxubuntu
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
-    sudo apt-get update
-    sudo apt-get install -y dotnet-sdk-2.0.0
+    # curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    # sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    # sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+    # sudo apt-get update
+    # sudo apt-get install -y dotnet-sdk-2.0.0
     
     # Node.js
     curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
@@ -72,9 +72,9 @@ post_install() {
     rm indicator.deb
 
     # app-grid
-    sudo add-apt-repository ppa:appgrid/stable -y
-    sudo apt-get update
-    sudo apt-get install appgrid -y
+    # sudo add-apt-repository ppa:appgrid/stable -y
+    # sudo apt-get update
+    # sudo apt-get install appgrid -y
 }
 
 post_install
